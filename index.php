@@ -10,7 +10,109 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
         <style>
   /* Estilos para el modal */
+  /* Estilos base */
+  .navbar {
+        background: #ffffff;
+        box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+    }
 
+    .navbar__menu {
+        display: flex;
+        justify-content: center;
+        gap: 1.5rem;
+        padding: 1rem;
+        margin: 0;
+        list-style: none;
+    }
+
+    .navbar__link {
+        color: #333;
+        text-decoration: none;
+        padding: 0.5rem 1rem;
+        border-radius: 4px;
+        transition: all 0.3s ease;
+        font-weight: 500;
+    }
+
+    .navbar__link:hover,
+    .navbar__link:focus {
+        background-color: #f8f9fa;
+        color: #007bff;
+        outline: 2px solid #007bff;
+    }
+
+    .navbar__link[aria-current="page"] {
+        background-color: #007bff;
+        color: white;
+    }
+
+    .navbar__link--modal {
+        background-color: #28a745;
+        color: white !important;
+    }
+
+    .navbar__link--modal:hover {
+        background-color: #218838;
+    }
+
+    /* Menú móvil */
+    .navbar__toggle {
+        display: none;
+        background: none;
+        border: none;
+        padding: 1rem;
+        cursor: pointer;
+    }
+
+    .navbar__hamburger {
+        display: block;
+        width: 25px;
+        height: 2px;
+        background: #333;
+        position: relative;
+    }
+
+    .navbar__hamburger::before,
+    .navbar__hamburger::after {
+        content: '';
+        position: absolute;
+        width: 100%;
+        height: 100%;
+        background: inherit;
+        left: 0;
+        transition: all 0.3s ease;
+    }
+
+    .navbar__hamburger::before {
+        top: -8px;
+    }
+
+    .navbar__hamburger::after {
+        top: 8px;
+    }
+
+    /* Responsive */
+    @media (max-width: 768px) {
+        .navbar__menu {
+            display: none;
+            flex-direction: column;
+            width: 100%;
+            text-align: center;
+        }
+
+        .navbar__menu[aria-expanded="true"] {
+            display: flex;
+        }
+
+        .navbar__toggle {
+            display: block;
+            margin-left: auto;
+        }
+
+        .navbar__item {
+            margin: 0.5rem 0;
+        }
+    }
     </style>
 
 
@@ -30,28 +132,61 @@
                     
                 </div>
             <div class="enlaces">
-                <nav class="navbar">
-                    <ul>
-                        <li >
-                            <a  href="page/quienesSomos.php">Quienes Somos?</a>
-                        </li>
-                        <li >
-                            <a  href="page/directorio.php">Directorio</a>                        
-                        </li>
-                        <li >
-                            <a href="page/descargas.php">Descargas</a>
-                        </li>
-                        <li>
-                            <a  href="page/galeria.php">Galeria</a>
-                        </li>
-                        <li>
-                            <a  href="page/Contacto.php">Contacto</a>
-                        </li>
-                        <li>
-                            <a  href="" data-bs-toggle="modal" data-bs-target="#sesionUsuario" >Sesión</a>
-                        </li>
-                    </ul>
-                </nav>
+            <nav class="navbar" aria-label="Navegación principal">
+    <!-- Botón para móvil -->
+    <button class="navbar__toggle" aria-expanded="false" aria-controls="navbar-menu" aria-label="Abrir menú">
+        <span class="navbar__hamburger"></span>
+    </button>
+    
+    <!-- Lista de navegación -->
+    <ul class="navbar__menu" id="navbar-menu" role="menubar">
+        <li class="navbar__item" role="none">
+            <a href="page/quienes-somos.php" class="navbar__link" 
+               role="menuitem" 
+               aria-current="<?= ($paginaActual === 'quienes-somos') ? 'page' : 'false' ?>">
+                Quiénes Somos
+            </a>
+        </li>
+        <li class="navbar__item" role="none">
+            <a href="page/directorio.php" class="navbar__link" 
+               role="menuitem"
+               aria-current="<?= ($paginaActual === 'directorio') ? 'page' : 'false' ?>">
+                Directorio
+            </a>
+        </li>
+        <li class="navbar__item" role="none">
+            <a href="page/descargas.php" class="navbar__link" 
+               role="menuitem"
+               aria-current="<?= ($paginaActual === 'descargas') ? 'page' : 'false' ?>">
+                Descargas
+            </a>
+        </li>
+        <li class="navbar__item" role="none">
+            <a href="page/galeria.php" class="navbar__link" 
+               role="menuitem"
+               aria-current="<?= ($paginaActual === 'galeria') ? 'page' : 'false' ?>">
+                Galería
+            </a>
+        </li>
+        <li class="navbar__item" role="none">
+            <a href="page/contacto.php" class="navbar__link" 
+               role="menuitem"
+               aria-current="<?= ($paginaActual === 'contacto') ? 'page' : 'false' ?>">
+                Contacto
+            </a>
+        </li>
+        <li class="navbar__item" role="none">
+            <a href="#sesion-usuario" 
+               class="navbar__link navbar__link--modal" 
+               role="menuitem"
+               data-bs-toggle="modal" 
+               data-bs-target="#sesionUsuario"
+               aria-haspopup="dialog">
+                Iniciar Sesión
+            </a>
+        </li>
+    </ul>
+</nav>
             </div>
             </div>
     </header>
@@ -143,5 +278,18 @@
     <script src="./js/bootstrap.min.js"></script>
     <script src="./js/sesionModal.js"></script>
     <script src="./js/fecha_actual.js"></script>
+    <script>
+    // Toggle del menú móvil
+    document.querySelector('.navbar__toggle').addEventListener('click', function() {
+        const menu = document.getElementById('navbar-menu');
+        const isExpanded = this.getAttribute('aria-expanded') === 'true';
+        
+        this.setAttribute('aria-expanded', !isExpanded);
+        menu.setAttribute('aria-expanded', !isExpanded);
+        
+        // Animación del hamburguesa
+        this.classList.toggle('navbar__toggle--active');
+    });
+</script>
 </body>
 </html>
