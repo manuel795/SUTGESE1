@@ -12,6 +12,10 @@
   /* Estilos para el modal */
 
     </style>
+
+
+</head>
+<body>
 <header>
         <div class="encabezado">
             <div class="titulog">
@@ -51,9 +55,6 @@
             </div>
          </div>
     </header>
-
-</head>
-<body>
     <div class="container">   
             <div class="titulo2">
                 <div class="mensaje">
