@@ -79,10 +79,10 @@
              <div class="mensaje3">
                 <div class="card">
                     <p>Lorem ipsum dolor, sit amet consectetur adipisicing elit. Veniam, quae quia maxime consequatur quidem aliquid magnam perferendis, 
-                      repellat id velit voluptatibus voluptates tempora ex et unde? Mollitia odit quos eum?
-                      Lorem, ipsum dolor sit amet consectetur adipisicing elit. Reprehenderit asperiores culpa, recusandae odit perspiciatis iure sapiente id
-                       illo eius rem sunt quae minima, sequi velit repellat? Cum dolorum voluptate nobis?
-                       Lorem ipsum dolor sit amet consectetur adipisicing elit. Dolore, totam, ut quam architecto pariatur eveniet error sunt dolorem nisi optio cumque corrupti,
+                        repellat id velit voluptatibus voluptates tempora ex et unde? Mollitia odit quos eum?
+                        Lorem, ipsum dolor sit amet consectetur adipisicing elit. Reprehenderit asperiores culpa, recusandae odit perspiciatis iure sapiente id
+                        illo eius rem sunt quae minima, sequi velit repellat? Cum dolorum voluptate nobis?
+                        Lorem ipsum dolor sit amet consectetur adipisicing elit. Dolore, totam, ut quam architecto pariatur eveniet error sunt dolorem nisi optio cumque corrupti,
                         fuga dolores quia quo ab. Facilis, quod aspernatur?
                     </p>
                 </div>
