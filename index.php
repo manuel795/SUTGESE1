@@ -43,17 +43,17 @@
                         </li>
                         <li>
                             <a  href="page/galeria.php">Galeria</a>
-                       </li>
+                        </li>
                         <li>
                             <a  href="page/Contacto.php">Contacto</a>
-                       </li>
-                       <li>
+                        </li>
+                        <li>
                             <a  href="" data-bs-toggle="modal" data-bs-target="#sesionUsuario" >Sesión</a>
-                       </li>
+                        </li>
                     </ul>
                 </nav>
             </div>
-         </div>
+            </div>
     </header>
     <div class="container">   
             <div class="titulo2">
