@@ -26,9 +26,55 @@ WHERE faltas.curp=? and faltas.curp=usuarios.curp and faltas.estado='SIN VALIDAR
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <script src="https://code.jquery.com/jquery-3.7.1.min.js"></script>
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">
     <link rel="stylesheet" href="../css/pUser.css">
     <title>Bienvenid@</title>
+<style>
+.tabla {
+  width: 100%;
+  overflow-x: auto;
+}
 
+table {
+  width: 100%;
+  border-collapse: collapse;
+  border-radius: 10px;
+  overflow: hidden;
+}
+
+th, td {
+  padding: 12px;
+  text-align: left;
+  border: 1px solid #ddd;
+}
+
+th {
+  background-color: #4CAF50;
+  color: white;
+}
+
+tr:nth-child(even) {
+  background-color: #f2f2f2;
+}
+
+/* Para dispositivos pequeños */
+@media screen and (max-width: 480px) {
+  table {
+    font-size: 14px;
+  }
+
+  th, td {
+    padding: 8px;
+  }
+}
+
+.container .titulo{
+    display:flex;
+    padding: 15px;
+    text-aling:center;
+    justify-content:center;
+}
+    </style>
 
 
 </head>
@@ -58,7 +104,7 @@ WHERE faltas.curp=? and faltas.curp=usuarios.curp and faltas.estado='SIN VALIDAR
                 
             ?>
             <div class="tabla"><!--Informacion de las faltas del usuario-->
-            <table class="table table-striped" id="tabla-usuarios">
+            <table class="table table-striped table-bordered" id="tabla-usuarios">
             <thead>
                 <tr>
                     <th>CURP</th>
@@ -66,9 +112,10 @@ WHERE faltas.curp=? and faltas.curp=usuarios.curp and faltas.estado='SIN VALIDAR
                     <th>Faltas</th>
                     <th>Motivo</th>
                     <th>Estado</th>
+                    <th>Acciones</th>
                 </tr>
             </thead>
-            <tbody >
+            <tbody class="table-group-divider">
                 <!-- Los datos se insertarán aquí dinámicamente -->
             </tbody>
         </table>
@@ -114,6 +161,10 @@ WHERE faltas.curp=? and faltas.curp=usuarios.curp and faltas.estado='SIN VALIDAR
                         <td>${usuario.fecha}</td>
                         <td>${usuario.motivo}</td>
                         <td>${usuario.estado}</td>
+                        <td>
+                            <i class="bi bi-pencil"></i>
+                            <i class="bi bi-trash"></i
+                        </td>
                     `;
                     tbody.appendChild(row);
                 });
