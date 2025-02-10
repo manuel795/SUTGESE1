@@ -42,8 +42,7 @@ if ($result->num_rows > 0) {
 				<th style='width: 180px;' >Nombre Completo</th>
 				<th style='width: 35px;'>Telefono</th>													
 				<th style='width: 20px;'>Correo</th>
-				<th style='width: 160px;'>Usuario</th>
-				<th style='width: 45px;'>Contraseña</th>												
+				<th style='width: 160px;'>Usuario</th>										
 				<th style='width: 25px;'>Estado</th>
 				<th style='width: 25px;'>Privilegios</th>
 																				  
@@ -63,7 +62,7 @@ if ($result->num_rows > 0) {
 																  <td>".$row['telefono']."</td>					  	
 																  <td>".$row['correo']."</td>
 															      <td>".$row['user']."</td>	  
-																  <td>".$row['pass']."</td>
+															
 																  <td>".$row['estado']."</td>
 																   <td>".$row['privilegio']."</td>
 

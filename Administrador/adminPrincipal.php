@@ -527,8 +527,7 @@ $nombreCompleto=$_SESSION['user_nombre'];
                         <td>${empleado.user}</td>
                         <td>${empleado.pass}</td>
                         <td>${empleado.privilegio}</td>
-                        <td>${empleado.estado}</td>
-                       
+                        <td>${empleado.estado}</td>                       
                     `;
                     tabla.appendChild(fila);
                 });
