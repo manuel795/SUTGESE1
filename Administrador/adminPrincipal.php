@@ -33,7 +33,7 @@ $nombreCompleto=$_SESSION['user_nombre'];
     .encabezado .logo{
         display:flex;
         align-items:center;
-        width:50%;
+        width:70%;
     }
     .encabezado .logo img{
         height: 60px;
@@ -42,7 +42,7 @@ $nombreCompleto=$_SESSION['user_nombre'];
     }
     .encabezado .logo .name{
         display:flex;
-        
+        font-size: 14px;
         padding:5px;
 
     }
@@ -50,49 +50,84 @@ $nombreCompleto=$_SESSION['user_nombre'];
         display:flex;
         padding:5px;
     }
-    .encabezado .enlaces{
-        width: 50%;
+    .logo {
+        font-size: 1.5rem;
+        font-weight: bold;
     }
-    .encabezado .enlaces .navbar {
-        width: 100%;
-        padding:10px;
-        justify-content:right;
-               
+  .encabezado .enlaces{
+    width:30%;
+    
+  }
+  
+  .enlaces .navbar {
+    display: flex;
+    align-items: center;
+    background-color:#333;
+    color: white;
+    padding: 10px 20px;
+    border-radius:20px;
+    justify-content:right;
+    
     }
-    .encabezado .enlaces .navbar ul{
-        display:flex;
+ 
 
-    }
-    .encabezado .enlaces .navbar ul li{
-        display:flex;
+    .enlaces .navbar .menu {
         list-style: none;
-        padding: 0 20px;
+        display: flex;
+        gap: 20px;
+        justify-content:right;
     }
-    .encabezado .enlaces .navbar ul li a{
-        color: #fff; 
-        text-decoration:none;/*Quitar la decoracion de los links */
-        font-weight:600px;
-        transition: color 0.3s, background-color 0.3s, transform 0.3s;
+
+   .navbar .menu li {
+        position: relative;
     }
-    .encabezado .enlaces .navbar ul li a:hover{
-        color: orange; /* Color al pasar el ratón */ 
-        transform: scale(1.0); /* Efecto de aumento */ 
+
+    .menu a {
+        text-decoration: none;
+        color: white;
+        padding: 10px 15px;
+        display: block;
+        transition: background-color 0.3s ease;
     }
-    .encabezado .enlaces .navbar ul li a::before{
-        content: "";
-        position: absolute; 
-        left: 0; 
-        height: 2px; 
-        bottom: -3px; 
-        width: 100%; 
-        background-color: #ff6347; 
-        transform: scaleX(0); 
-        transform-origin: left; 
-        transition: transform 0.3s; 
+
+    .enlaces .navbar .menu a:hover {
+        background-color: orange;
+        border-radius: 10px;
     }
-    .encabezado .enlaces .navbar ul li a:hover::before{
-        transform: scaleX(1);
+
+    /* Estilos del submenú */
+    .submenu {
+        display: none;
+        position: absolute;
+        top: 100%;
+        left: 0;
+        background-color: #444;
+        list-style: none;
+        padding: 10px 0;
+        border-radius: 10px;
+        min-width: 250px;
+        z-index: 1000;
     }
+
+    .submenu li {
+        width: 100%;
+    }
+
+    .submenu a {
+        padding: 10px 20px;
+        color: white;
+        text-align: left;
+    }
+
+    .submenu a:hover {
+        background-color: #666;
+    }
+
+    /* Mostrar el submenú al pasar el mouse */
+    .dropdown:hover .submenu {
+        display: block;
+    }
+
     @media (max-width:480px){/* Responsive para celulares */
         .encabezado{
             flex-direction:column;        
@@ -100,6 +135,15 @@ $nombreCompleto=$_SESSION['user_nombre'];
         .encabezado .logo{ 
             font-size: 12px; /* Tamaño de fuente aún más pequeño en pantallas muy pequeñas */ 
             min-width:100%;
+        }
+        .encabezado .enlaces {
+            width: 100%;
+
+        }
+        .encabezado .enlaces .navbar {
+            flex-direction:column;
+            justify-content:center;           
+
         }
         .encabezado .enlaces .navbar ul {
             flex-direction:column;
@@ -109,7 +153,7 @@ $nombreCompleto=$_SESSION['user_nombre'];
         }
         .encabezado .enlaces .navbar ul li{ 
             padding-bottom:10px;
-
+            width: 100%;
         }
         .encabezado .enlaces .navbar ul li a:hover{ 
             flex-direction:column;
@@ -236,6 +280,8 @@ $nombreCompleto=$_SESSION['user_nombre'];
     border-radius:25px;
 }
 
+
+
 </style>
 <header>
     <div class="encabezado">           
@@ -246,23 +292,24 @@ $nombreCompleto=$_SESSION['user_nombre'];
                         </div>
                     </div> 
                     <div class="enlaces">
-                        <nav class="navbar">
-                            <ul> 
-                                <li>
-                                    <a href="" data-bs-toggle="modal" data-bs-target="#altaUsuario">Alta de Usuario</a>
-                                </li> 
-                                <li>
-                                    <a href="" data-bs-toggle="modal" data-bs-target="#altaFalta">Alta de Faltas</a>
-                                </li> 
-                                <li>
-                                    <a href="" data-bs-toggle="modal" data-bs-target="#altaUbicacion">Alta de Ubicación</a>
-                                </li> 
-                                <li>
-                                    <a href="" data-bs-toggle="modal" data-bs-target="#consultaPersonal">Consulta General</a>
-                                </li> 
-                                <li>
-                                    <a href="" data-bs-toggle="modal" data-bs-target="#consultaFalta">Consulta Faltas</a>
-                                </li> 
+                        <nav class="navbar">	
+                            <ul class="menu"> 
+                                <li class="dropdown">
+                                    <a href="#">Altas</a>
+                                        <ul class="submenu">
+                                            <li><a href="#" data-bs-toggle="modal" data-bs-target="#altaUsuario">Alta de Usuario</a></li>
+                                            <li><a href="#" data-bs-toggle="modal" data-bs-target="#altaFalta">Alta de Faltas</a></li>
+                                            <li><a href="#" data-bs-toggle="modal" data-bs-target="#altaUbicacion">Alta de Ubicación</a></li>
+                                        </ul>
+                                </li>
+                                <li class="dropdown">
+                                    <a href="#">Cosultas</a>
+                                        <ul class="submenu">
+                                            <li><a href="#" data-bs-toggle="modal" data-bs-target="#consultaPersonal">Consulta General</a></li>
+                                            <li><a href="#" data-bs-toggle="modal" data-bs-target="#consultaFalta">Consulta Faltas</a></li>
+                                            
+                                        </ul>
+                                </li>
                                 <li>
                                     <a href="../salir.php">Cerrar Sesión</a>
                                 </li> 
